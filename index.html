@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salameh Atawneh | Professional Portfolio</title>
+    <!-- Embedding Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -28,7 +29,7 @@
             cursor: none; 
         }
 
-        a, button, .service-card, .portfolio-card {
+        a, button, .service-card, .portfolio-card, .filter-btn {
             cursor: none; 
         }
 
@@ -244,7 +245,6 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             border: none;
-            cursor: pointer;
             box-shadow: 0 4px 14px rgba(46, 204, 113, 0.3);
         }
         .btn-emerald:hover {
@@ -418,7 +418,9 @@
             line-height: 1.7;
         }
 
-        /* Portfolio Section */
+        /* ======================================================= */
+        /* ADVANCED PORTFOLIO WITH DYNAMIC FILTERS                 */
+        /* ======================================================= */
         .portfolio-section {
             max-width: 1200px;
             margin: 140px auto;
@@ -426,11 +428,38 @@
             position: relative;
             z-index: 2;
         }
+
+        /* أزرار الفرز الذكية التفاعلية */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: #162227;
+            border: 1px solid #203139;
+            color: #94a3b8;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #2ecc71;
+            border-color: #2ecc71;
+            color: #111a1e;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
         
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr); 
             gap: 40px;
+            perspective: 1000px; /* تفعيل البعد الثالث لحركة الإمالة */
         }
 
         .portfolio-card {
@@ -441,7 +470,23 @@
             height: 400px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.1s ease, opacity 0.4s ease;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        /* حالة الإخفاء عند فرز المشاريع */
+        .portfolio-card.hide {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            pointer-events: none;
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            border: none;
         }
 
         .portfolio-img-box {
@@ -465,6 +510,7 @@
             padding: 35px;
             z-index: 2;
             transition: background 0.4s ease;
+            transform: translateZ(30px); /* دفع النصوص للأمام لتأثير الـ 3D */
         }
 
         .portfolio-card h3 {
@@ -488,15 +534,11 @@
 
         .portfolio-card:hover {
             border-color: #2ecc71;
-            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.2);
         }
 
         .portfolio-card:hover .portfolio-img-box {
             transform: scale(1.06); 
-        }
-
-        .portfolio-card:hover .portfolio-overlay {
-            background: linear-gradient(to top, rgba(17, 26, 30, 0.98) 0%, rgba(17, 26, 30, 0.5) 60%, rgba(0,0,0,0) 100%);
         }
 
         .portfolio-card:hover h3 {
@@ -522,11 +564,19 @@
 
         /* Responsive Mobile Layout */
         @media (max-width: 968px) {
-            body, a, button, .service-card, .portfolio-card {
+            body, a, button, .service-card, .portfolio-card, .filter-btn {
                 cursor: auto; 
             }
             .custom-cursor-dot, .custom-cursor-ring, .ambient-mouse-glow {
                 display: none; 
+            }
+            .portfolio-filters {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .filter-btn {
+                padding: 8px 18px;
+                font-size: 0.85rem;
             }
             .hero-section {
                 background-size: cover;
@@ -616,10 +666,12 @@
         <div class="contact-item">
             <div class="contact-item-title">Phone</div>
             <div class="contact-item-value">+962XXXXXXXXX</div>
-        </div><div class="contact-item">
+        </div><!--
+     --><div class="contact-item">
             <div class="contact-item-title">Email</div>
             <div class="contact-item-value">salameh@example.com</div>
-        </div><div class="contact-item">
+        </div><!--
+     --><div class="contact-item">
             <div class="contact-item-title">Location</div>
             <div class="contact-item-value">Amman, Jordan</div>
         </div>
@@ -629,7 +681,8 @@
         <div class="about-container">
             <div class="about-image-side">
                 <div class="about-img-placeholder">Featured Design / Asset</div>
-            </div><div class="about-content-side">
+            </div><!--
+         --><div class="about-content-side">
                 <h4 class="about-tag">Who am I?</h4>
                 <h2 class="about-heading">I'm Salameh Atawneh, a Visual Brand Designer and Creative Strategist...</h2>
                 <p class="about-text">Dedicated to transforming abstract ideas into powerful, pixel-perfect visual experiences. I specialize in developing cohesive brand identities, high-impact marketing visuals, and commercial designs built to resonate and leave a lasting impression.</p>
@@ -681,14 +734,24 @@
         </div>
     </section>
 
+    <!-- معرض الأعمال التفاعلي والذكي المطور -->
     <section class="portfolio-section">
         <div class="section-title-wrapper">
             <div class="section-title-bg">PORTFOLIO</div>
             <h2 class="section-title-main">Featured Projects</h2>
         </div>
 
-        <div class="portfolio-grid">
-            <div class="portfolio-card">
+        <!-- أزرار التصنيف التفاعلية -->
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All Work</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+            <button class="filter-btn" data-filter="social">Social Media</button>
+            <button class="filter-btn" data-filter="packaging">Packaging</button>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- مشروع 1 - هويات -->
+            <div class="portfolio-card" data-category="branding">
                 <div class="portfolio-img-box" style="background-image: url('project1.jpg'); background-color: #1a272c;"></div>
                 <div class="portfolio-overlay">
                     <p>Brand Identity</p>
@@ -696,7 +759,8 @@
                 </div>
             </div>
 
-            <div class="portfolio-card">
+            <!-- مشروع 2 - سوشيال ميديا -->
+            <div class="portfolio-card" data-category="social">
                 <div class="portfolio-img-box" style="background-image: url('project2.jpg'); background-color: #1a272c;"></div>
                 <div class="portfolio-overlay">
                     <p>Social Media Design</p>
@@ -704,7 +768,8 @@
                 </div>
             </div>
 
-            <div class="portfolio-card">
+            <!-- مشروع 3 - تغليف -->
+            <div class="portfolio-card" data-category="packaging">
                 <div class="portfolio-img-box" style="background-image: url('project3.jpg'); background-color: #1a272c;"></div>
                 <div class="portfolio-overlay">
                     <p>Packaging Identity</p>
@@ -712,7 +777,8 @@
                 </div>
             </div>
 
-            <div class="portfolio-card">
+            <!-- مشروع 4 - سوشيال ميديا -->
+            <div class="portfolio-card" data-category="social">
                 <div class="portfolio-img-box" style="background-image: url('project4.jpg'); background-color: #1a272c;"></div>
                 <div class="portfolio-overlay">
                     <p>Visual Strategy</p>
@@ -758,11 +824,15 @@
         }
         updateCoordinates();
 
-        const interactiveElements = document.querySelectorAll('a, button, .service-card, .contact-item, .portfolio-card');
-        interactiveElements.forEach(item => {
-            item.addEventListener('mouseenter', () => cRing.classList.add('hovered'));
-            item.addEventListener('mouseleave', () => cRing.classList.remove('hovered'));
-        });
+        // ربط أحداث الماوس المضيء بالأزرار والروابط والكروت
+        function refreshCursorListeners() {
+            const interactiveElements = document.querySelectorAll('a, button, .service-card, .contact-item, .portfolio-card, .filter-btn');
+            interactiveElements.forEach(item => {
+                item.addEventListener('mouseenter', () => cRing.classList.add('hovered'));
+                item.addEventListener('mouseleave', () => cRing.classList.remove('hovered'));
+            });
+        }
+        refreshCursorListeners();
 
         document.addEventListener('click', (e) => {
             const spark = document.createElement('div');
@@ -771,6 +841,51 @@
             spark.style.top = e.clientY + 'px';
             document.body.appendChild(spark);
             setTimeout(() => spark.remove(), 500);
+        });
+
+        // =======================================================
+        // سكربت الفرز والـ 3D Tilt Effect الذكي
+        // =======================================================
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // تبديل الزر النشط
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                portfolioCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (filterValue === 'all' || filterValue === cardCategory) {
+                        card.classList.remove('hide');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                });
+            });
+        });
+
+        // سكربت تأثير المنظور ثلاثي الأبعاد الاحترافي (3D Tilt) عند تحريك الماوس
+        portfolioCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // حساب زاوية الميلان بناءً على موقع الماوس داخل الكرت
+                const tiltX = ((rect.height / 2) - y) / 15;
+                const tiltY = (x - (rect.width / 2)) / 15;
+
+                card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // إعادة الكرت لوضعه الأصلي المستقر عند خروج الماوس
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+            });
         });
     </script>
 
