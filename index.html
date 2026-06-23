@@ -71,21 +71,21 @@
             color: #2ecc71;
         }
 
-        /* Hero Section - Optimized Background Positioning */
+        /* Hero Section */
         .hero-section {
             position: relative;
             width: 100%;
             min-height: 100vh; 
             background-image: url('my-photo.png.png'); 
-            background-size: contain; /* تغيير الحجم لكي لا تتمدد الصورة بشكل ضخم عشوائي */
-            background-position: right center; /* دفع صورتك لليمين لتتوازن مع النص الإنجليزي في اليسار */
+            background-size: contain; 
+            background-position: right center; 
             background-repeat: no-repeat;
             display: flex;
             align-items: center;
-            background-color: #111a1e; /* الحفاظ على اللون الزيتي الداكن في المساحات الفارغة */
+            background-color: #111a1e; 
         }
 
-        /* تظليل متدرج احترافي لدمج الصورة من اليمين إلى اليسار بسلاسة وبشكل سينمائي */
+        /* تظليل متدرج سينمائي للكمبيوتر */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -108,7 +108,7 @@
         }
         
         .hero-content {
-            width: 55%; /* إعطاء مساحة أكبر ومريحة للنصوص */
+            width: 55%; 
         }
         .hero-welcome {
             font-size: 1.5rem;
@@ -323,14 +323,16 @@
             background-color: #0d1417;
         }
 
-        /* Responsive */
+        /* ضبط الاستجابة للموبايل والتلفونات بشكل دقيق وعميق */
         @media (max-width: 968px) {
             .hero-section {
-                background-size: cover;
-                background-position: center center;
+                background-size: cover; /* جعل الصورة تفرش كامل شاشة الموبايل العمودية */
+                background-position: 70% top; /* إزاحة الصورة لإظهار ملامح وجهك وجسمك العلوي بدلاً من اليد */
+                min-height: 100vh;
             }
+            /* تظليل مخصص للموبايل لضمان وضوح النص تماماً فوق الصورة */
             .hero-section::before {
-                background: linear-gradient(to bottom, rgba(17, 26, 30, 0.7) 0%, rgba(17, 26, 30, 0.95) 100%);
+                background: linear-gradient(to bottom, rgba(17, 26, 30, 0.6) 0%, rgba(17, 26, 30, 0.9) 100%);
             }
             .hero-content, .about-image-side, .about-content-side {
                 width: 100%;
@@ -339,6 +341,7 @@
             }
             .hero-content {
                 text-align: center;
+                padding-top: 60px;
             }
             .hero-desc {
                 margin: 0 auto 35px auto;
@@ -377,7 +380,7 @@
         </div>
     </nav>
 
-    <!-- واجهة متزنة وسينمائية ومريحة للعين -->
+    <!-- واجهة هيرو متوافقة 100% مع الكمبيوتر والموبايل -->
     <section class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
