@@ -9,13 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ======================================================= */
-        /* HERE YOU CAN CHANGE YOUR IMAGE EASILY / غير صورتك هنا بسهولة  */
-        /* ======================================================= */
         :root {
-            --hero-bg-image: url('my-photo.png.png'); /* اكتب اسم صورتك وامتدادها هنا فقط */
+            --hero-bg-image: url('my-photo.png.png'); 
         }
-        /* ======================================================= */
 
         /* Global Styles */
         * {
@@ -29,14 +25,14 @@
             background-color: #111a1e; 
             color: #ffffff;
             overflow-x: hidden;
-            cursor: none; /* إخفاء الماوس الأصلي لتقديم تجربة سينمائية */
-        }
-
-        a, button, .service-card {
             cursor: none; 
         }
 
-        /* 1. تأثير الوهج السينمائي الخلفي المتابع للماوس */
+        a, button, .service-card, .portfolio-card {
+            cursor: none; 
+        }
+
+        /* تأثير الوهج الخلفي المتابع للماوس */
         .ambient-mouse-glow {
             position: fixed;
             top: 0;
@@ -46,12 +42,12 @@
             background: radial-gradient(circle, rgba(46, 204, 113, 0.08) 0%, rgba(46, 204, 113, 0.03) 45%, rgba(0,0,0,0) 70%);
             border-radius: 50%;
             pointer-events: none;
-            z-index: 0; /* خلف المحتوى لتضيء العناصر من ورائها */
+            z-index: 0; 
             transform: translate(-50%, -50%);
             will-change: transform;
         }
 
-        /* 2. مؤشر الماوس الاحترافي (نقطة مركزية + حلقة ذكية) */
+        /* مؤشر الماوس الاحترافي */
         .custom-cursor-dot {
             width: 8px;
             height: 8px;
@@ -75,7 +71,6 @@
             transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* حالة التفاعل فوق الأزرار والروابط */
         .custom-cursor-ring.hovered {
             width: 65px;
             height: 65px;
@@ -84,7 +79,7 @@
             box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
         }
 
-        /* تأثير الشرر أو النقر المغناطيسي */
+        /* تأثير الشرر عند النقر */
         .click-spark {
             position: fixed;
             width: 10px;
@@ -159,7 +154,6 @@
             overflow: hidden;
         }
 
-        /* تظليل متدرج سينمائي للكمبيوتر */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -172,7 +166,7 @@
             z-index: 1;
         }
 
-        /* جزيئات عائمة */
+        /* جزيئات عائمة خلفية */
         .bg-animation {
             position: absolute;
             top: 0;
@@ -292,6 +286,8 @@
         .about-section {
             background-color: #0d1417; 
             padding: 100px 0;
+            position: relative;
+            z-index: 2;
         }
         .about-container {
             max-width: 1200px;
@@ -362,6 +358,8 @@
             max-width: 1200px;
             margin: 120px auto;
             padding: 0 25px;
+            position: relative;
+            z-index: 2;
         }
         .section-title-wrapper {
             position: relative;
@@ -420,6 +418,96 @@
             line-height: 1.7;
         }
 
+        /* Portfolio Section */
+        .portfolio-section {
+            max-width: 1200px;
+            margin: 140px auto;
+            padding: 0 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 40px;
+        }
+
+        .portfolio-card {
+            position: relative;
+            background-color: #162227;
+            border: 1px solid #203139;
+            border-radius: 16px;
+            height: 400px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .portfolio-img-box {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(13, 20, 23, 0.95) 0%, rgba(13, 20, 23, 0.4) 50%, rgba(0,0,0,0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 35px;
+            z-index: 2;
+            transition: background 0.4s ease;
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            transform: translateY(10px);
+            transition: transform 0.4s ease, color 0.4s ease;
+        }
+
+        .portfolio-card p {
+            font-size: 0.95rem;
+            color: #2ecc71; 
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-card:hover {
+            border-color: #2ecc71;
+            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.15);
+        }
+
+        .portfolio-card:hover .portfolio-img-box {
+            transform: scale(1.06); 
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            background: linear-gradient(to top, rgba(17, 26, 30, 0.98) 0%, rgba(17, 26, 30, 0.5) 60%, rgba(0,0,0,0) 100%);
+        }
+
+        .portfolio-card:hover h3 {
+            color: #2ecc71;
+            transform: translateY(0);
+        }
+
+        .portfolio-card:hover p {
+            transform: translateY(0);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -428,15 +516,17 @@
             font-size: 0.9rem;
             border-top: 1px solid #1a262c;
             background-color: #0d1417;
+            position: relative;
+            z-index: 2;
         }
 
         /* Responsive Mobile Layout */
         @media (max-width: 968px) {
-            body, a, button, .service-card {
+            body, a, button, .service-card, .portfolio-card {
                 cursor: auto; 
             }
             .custom-cursor-dot, .custom-cursor-ring, .ambient-mouse-glow {
-                display: none; /* إخفاء التأثيرات على الموبايل لعدم وجود ماوس */
+                display: none; 
             }
             .hero-section {
                 background-size: cover;
@@ -463,6 +553,13 @@
             }
             .services-grid {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr; 
+                gap: 25px;
+            }
+            .portfolio-card {
+                height: 300px;
             }
             .contact-item {
                 width: 100%;
@@ -584,6 +681,47 @@
         </div>
     </section>
 
+    <section class="portfolio-section">
+        <div class="section-title-wrapper">
+            <div class="section-title-bg">PORTFOLIO</div>
+            <h2 class="section-title-main">Featured Projects</h2>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-img-box" style="background-image: url('project1.jpg'); background-color: #1a272c;"></div>
+                <div class="portfolio-overlay">
+                    <p>Brand Identity</p>
+                    <h3>Creative Branding Concept</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img-box" style="background-image: url('project2.jpg'); background-color: #1a272c;"></div>
+                <div class="portfolio-overlay">
+                    <p>Social Media Design</p>
+                    <h3>High-Impact Campaign Assets</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img-box" style="background-image: url('project3.jpg'); background-color: #1a272c;"></div>
+                <div class="portfolio-overlay">
+                    <p>Packaging Identity</p>
+                    <h3>Premium Commercial Packaging</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="portfolio-img-box" style="background-image: url('project4.jpg'); background-color: #1a272c;"></div>
+                <div class="portfolio-overlay">
+                    <p>Visual Strategy</p>
+                    <h3>Digital Marketing Artwork</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>© 2026 Salameh Atawneh. All rights reserved.</p>
     </footer>
@@ -597,25 +735,20 @@
         let ringX = 0, ringY = 0;
         let glowX = 0, glowY = 0;
 
-        // تتبع حركة الماوس الحقيقية
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
             
-            // النقطة المركزية تتحرك فوراً بدون تأخير
             cDot.style.left = mouseX + 'px';
             cDot.style.top = mouseY + 'px';
         });
 
-        // دالة الحركة السلسة والانسيابية المزدوجة
         function updateCoordinates() {
-            // حركة الحلقة بتأخير خفيف (0.2)
             ringX += (mouseX - ringX) * 0.2;
             ringY += (mouseY - ringY) * 0.2;
             cRing.style.left = ringX + 'px';
             cRing.style.top = ringY + 'px';
 
-            // حركة هالة الإضاءة الخلفية بتأخير أنعم (0.06) لتعطي إحساساً بالوزن والعمق السينمائي
             glowX += (mouseX - glowX) * 0.06;
             glowY += (mouseY - glowY) * 0.06;
             ambientGlow.style.left = glowX + 'px';
@@ -625,22 +758,18 @@
         }
         updateCoordinates();
 
-        // تأثير تكبير المؤشر والتفاعل
-        const interactiveElements = document.querySelectorAll('a, button, .service-card, .contact-item');
+        const interactiveElements = document.querySelectorAll('a, button, .service-card, .contact-item, .portfolio-card');
         interactiveElements.forEach(item => {
             item.addEventListener('mouseenter', () => cRing.classList.add('hovered'));
             item.addEventListener('mouseleave', () => cRing.classList.remove('hovered'));
         });
 
-        // تأثير الشرر اللطيف عند النقر الفعلي بالماوس
         document.addEventListener('click', (e) => {
             const spark = document.createElement('div');
             spark.classList.add('click-spark');
             spark.style.left = e.clientX + 'px';
             spark.style.top = e.clientY + 'px';
             document.body.appendChild(spark);
-            
-            // تنظيف العنصر بعد انتهاء الحركة مباشرة
             setTimeout(() => spark.remove(), 500);
         });
     </script>
