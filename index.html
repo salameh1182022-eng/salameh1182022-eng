@@ -3,101 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بورتفوليو أعمالي | مصمم جرافيك</title>
+    <title>سلامة العطاونة | بورتفوليو احترافي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #0f0f11; color: #ffffff; padding: 20px; }
-        header { text-align: center; padding: 60px 0 40px 0; }
-        header h1 { font-size: 2.8rem; color: #00ffcc; margin-bottom: 15px; letter-spacing: 1px; }
-        header p { color: #a0a0aa; font-size: 1.2rem; max-width: 60px; margin: 0 auto; line-height: 1.6; }
-        
-        /* شبكة عرض الأعمال */
-        .portfolio-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 30px; 
-            max-width: 1200px; 
-            margin: 40px auto; 
+        /* إعدادات التصميم العامة المستوحاة من الصورة */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
         }
         
-        /* كرت المشروع */
-        .project-card { 
-            background: #18181c; 
-            border-radius: 16px; 
-            overflow: hidden; 
-            border: 1px solid #27272a;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        body {
+            background-color: #111a1e; /* اللون الزيتي الداكن الفاخر والخلفية العميقة */
+            color: #ffffff;
+            overflow-x: hidden;
         }
-        .project-card:hover { 
-            transform: translateY(-8px); 
-            border-color: #00ffcc;
-        }
-        .project-img { width: 100%; height: 240px; background: #27272a; display: flex; align-items: center; justify-content: center; color: #888; font-weight: bold; font-size: 1.1rem; }
-        .project-info { padding: 25px; }
-        .project-info h3 { margin-bottom: 12px; color: #ffffff; font-size: 1.4rem; }
-        .project-info p { color: #a0a0aa; font-size: 0.95rem; line-height: 1.6; }
-        
-        /* أزرار التواصل */
-        .contact-section { text-align: center; margin: 50px 0; }
-        .contact-section h2 { margin-bottom: 20px; color: #ffffff; }
-        .btn { 
-            display: inline-block; 
-            padding: 12px 30px; 
-            margin: 10px; 
-            border-radius: 30px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            transition: all 0.3s ease; 
-        }
-        .btn-primary { background-color: #00ffcc; color: #0f0f11; }
-        .btn-primary:hover { background-color: #00ccaa; transform: scale(1.05); }
-        .btn-secondary { border: 2px solid #27272a; color: #ffffff; }
-        .btn-secondary:hover { border-color: #00ffcc; color: #00ffcc; background: #18181c; }
 
-        footer { text-align: center; padding: 40px 0; color: #71717a; border-top: 1px solid #27272a; margin-top: 60px; font-size: 0.9rem; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* القائمة العلوية (Navbar) */
+        nav {
+            display: table;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 25px;
+        }
+        .nav-logo {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+        .nav-logo span {
+            color: #2ecc71; /* الأخضر الزمردي للهوية */
+        }
+        .nav-links {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: left;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin-right: 25px;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #2ecc71;
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 25px 120px 25px;
+            position: relative;
+        }
+        .hero-content {
+            width: 55%;
+            display: inline-block;
+            vertical-align: middle;
+            padding-top: 40px;
+        }
+        .hero-welcome {
+            font-size: 1.5rem;
+            color: #2ecc71;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-desc {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+        
+        /* الصورة الخلفية المدمجة في الهيرو */
+        .hero-image-wrapper {
+            width: 40%;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            position: relative;
+        }
+        .hero-profile-placeholder {
+            width: 320px;
+            height: 420px;
+            background: #1a262c;
+            border-radius: 20px;
+            margin: 0 auto;
+            border: 1px solid #2e3f47;
+            display: block;
+            line-height: 420px;
+            color: #4a5d66;
+            font-weight: bold;
+        }
+
+        /* أزرار مخصصة احترافية */
+        .btn-emerald {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: #111a1e;
+            padding: 12px 35px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(46, 204, 113, 0.2);
+        }
+        .btn-emerald:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+        }
+
+        /* شريط معلومات الاتصال السريع السفلي في الهيرو */
+        .quick-contact-bar {
+            max-width: 1200px;
+            margin: -40px auto 80px auto;
+            padding: 0 25px;
+        }
+        .contact-item {
+            display: inline-block;
+            width: 30%;
+            border-left: 1px solid #2e3f47;
+            padding-right: 20px;
+        }
+        .contact-item:last-child {
+            border-left: none;
+        }
+        .contact-item-title {
+            font-size: 0.85rem;
+            color: #2ecc71;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .contact-item-value {
+            font-size: 1.05rem;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        /* قسم من أنا (About Section) */
+        .about-section {
+            background-color: #0d1417; /* لون أغمق قليلاً للفصل البصري */
+            padding: 100px 0;
+        }
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        .about-image-side {
+            width: 40%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .about-img-placeholder {
+            width: 90%;
+            height: 440px;
+            background: #161f24;
+            border-radius: 16px;
+            border: 1px solid #24333a;
+            line-height: 440px;
+            text-align: center;
+            color: #4a5d66;
+            font-weight: bold;
+        }
+        .about-content-side {
+            width: 55%;
+            display: inline-block;
+            vertical-align: top;
+            padding-right: 40px;
+        }
+        .about-tag {
+            color: #2ecc71;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .about-heading {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        .about-text {
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        /* جدول التفاصيل الشخصية داخل عني */
+        .info-table {
+            width: 100%;
+            margin-bottom: 35px;
+            border-collapse: collapse;
+        }
+        .info-table td {
+            padding: 10px 0;
+            font-size: 1rem;
+        }
+        .info-label {
+            color: #ffffff;
+            font-weight: 700;
+            width: 25%;
+        }
+        .info-value {
+            color: #94a3b8;
+        }
+
+        /* قسم الخدمات (Services Section) */
+        .services-section {
+            max-width: 1200px;
+            margin: 120px auto;
+            padding: 0 25px;
+        }
+        .section-title-wrapper {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        .section-title-bg {
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.02);
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            user-select: none;
+        }
+        .section-title-main {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* شبكة الكروت للخدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .service-card {
+            background-color: #162227;
+            border: 1px solid #203139;
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #2ecc71;
+            background-color: #1a292f;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .service-icon {
+            font-size: 2.2rem;
+            color: #2ecc71;
+            margin-bottom: 25px;
+        }
+        .service-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .service-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* الفوتر السفلي للموقع */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #1a262c;
+            background-color: #0d1417;
+        }
+
+        /* لجعل التصميم متوافقاً بالكامل مع الموبايل */
+        @media (max-width: 968px) {
+            .hero-content, .hero-image-wrapper, .about-image-side, .about-content-side {
+                width: 100%;
+                display: block;
+                padding: 0;
+            }
+            .hero-image-wrapper, .about-image-side {
+                margin-top: 50px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .contact-item {
+                width: 100%;
+                border-left: none;
+                border-bottom: 1px solid #2e3f47;
+                padding: 15px 0;
+            }
+            .contact-item:last-child {
+                border-bottom: none;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>سلامة العطاونة</h1>
-        <p>مصمم جرافيك محترف | أبتكر هويات بصرية وتصاميم إعلانية تترك أثراً وتصنع فارقاً لعلامتك التجارية.</p>
-    </header>
+    <nav>
+        <div class="nav-logo">THE<span>PRO</span></div>
+        <div class="nav-links">
+            <a href="#" class="active">الرئيسية</a>
+            <a href="#">السيرة الذاتية</a>
+            <a href="#">الأعمال</a>
+            <a href="#">المدونة</a>
+            <a href="#">تواصل معي</a>
+        </div>
+    </nav>
 
-    <main class="portfolio-grid">
-        <!-- المشروع الأول -->
-        <div class="project-card">
-            <div class="project-img">معرض الصور قريباً</div>
-            <div class="project-info">
-                <h3>تصميم الهويات البصرية واللوقو</h3>
+    <section class="hero-container">
+        <div class="hero-content">
+            <h4 class="hero-welcome">مرحباً!</h4>
+            <h1 class="hero-title">أنا سلامة العطاونة</h1>
+            <p class="hero-desc">مصمم جرافيك محترف | أبتكر هويات بصرية وتصاميم إعلانية تترك أثراً وتصنع فارقاً لعلامتك التجارية.</p>
+            <a href="https://wa.me/962700000000" target="_blank" class="btn-emerald">تواصل معي</a>
+        </div><div class="hero-image-wrapper">
+            <div class="hero-profile-placeholder">مكان صورتك الشخصية</div>
+        </div>
+    </section>
+
+    <div class="quick-contact-bar">
+        <div class="contact-item">
+            <div class="contact-item-title">الهاتف</div>
+            <div class="contact-item-value">+962XXXXXXXXX</div>
+        </div><div class="contact-item-value contact-item">
+            <div class="contact-item-title">البريد الإلكتروني</div>
+            <div class="contact-item-value">salameh@example.com</div>
+        </div><div class="contact-item-value contact-item">
+            <div class="contact-item-title">الموقع</div>
+            <div class="contact-item-value">عمان، الأردن</div>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image-side">
+                <div class="about-img-placeholder">صورة تعبيرية أو عمل مميز</div>
+            </div><div class="about-content-side">
+                <h4 class="about-tag">من أنا؟</h4>
+                <h2 class="about-heading">أنا سلامة العطاونة، مصمم ومبدع هويات بصرية متخصّص في تحويل الأفكار إلى تجارب بصرية ملهمة...</h2>
+                <p class="about-text">أعمل بشغف كبير في مجال الجرافيك ديزاين لبناء استراتيجيات بصرية متكاملة للشركات والأفراد، مع التركيز الكامل على إيصال رسالة العلامة التجارية بذكاء وأناقة بكسل تلو الآخر.</p>
+                
+                <table class="info-table">
+                    <tr>
+                        <td class="info-label">الاسم:</td>
+                        <td class="info-value">سلامة العطاونة</td>
+                        <td class="info-label">من:</td>
+                        <td class="info-value">عمان، الأردن</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">العمر:</td>
+                        <td class="info-value">25 عاماً</td>
+                        <td class="info-label">الإيميل:</td>
+                        <td class="info-value">salameh@example.com</td>
+                    </tr>
+                </table>
+
+                <a href="#" class="btn-emerald">تحميل السيرة الذاتية</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="section-title-wrapper">
+            <div class="section-title-bg">SERVICES</div>
+            <h2 class="section-title-main">الخدمات التي أقدمها</h2>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✦</div>
+                <h3>تصميم الهويات البصرية</h3>
                 <p>بناء استراتيجيات بصرية متكاملة تشمل الشعارات، الألوان، الخطوط، وتطبيقات الهوية لتجعل مشروعك فريداً وراسخاً في أذهان عملائك.</p>
             </div>
-        </div>
 
-        <!-- المشروع الثاني -->
-        <div class="project-card">
-            <div class="project-img">معرض الصور قريباً</div>
-            <div class="project-info">
-                <h3>تصاميم السوشيال ميديا والإعلانات</h3>
+            <div class="service-card">
+                <div class="service-icon">❖</div>
+                <h3>تصميم السوشيال ميديا</h3>
                 <p>صناعة بوسترات وحملات إعلانية بصرية عالية التأثير لمنصات التواصل الاجتماعي، مصممة خصيصاً لزيادة التفاعل وجذب الفئة المستهدفة.</p>
             </div>
-        </div>
 
-        <!-- المشروع الثالث -->
-        <div class="project-card">
-            <div class="project-img">معرض الصور قريباً</div>
-            <div class="project-info">
-                <h3>تصميم وتغليف المنتجات (Packaging)</h3>
-                <p>ابتكار أشكال وقوالب تغليف خارجية للمنتجات تجمع بين الجمال البصري والوظيفة العملية لتتميز على رفوف المنافسة.</p>
+            <div class="service-card">
+                <div class="service-icon">⚃</div>
+                <h3>تصميم التغليف (Packaging)</h3>
+                <p>ابتكار أشكال وقوالب تغليف خارجية للمنتجات تجمع بين الجمال البصري والوظيفة العملية لتتميز بقوة على رفوف المنافسة.</p>
             </div>
         </div>
-    </main>
-
-    <!-- قسم التواصل الجديد -->
-    <section class="contact-section">
-        <h2>هل لديك مشروع ترغب في البدء به؟</h2>
-        <a href="https://wa.me/اكتب_رقمك_هنا" target="_blank" class="btn btn-primary">تواصل معي عبر واتساب</a>
-        <a href="https://www.behance.net/اكتب_حسابك" target="_blank" class="btn btn-secondary">تصفح حسابي على Behance</a>
     </section>
 
     <footer>
