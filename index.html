@@ -29,11 +29,38 @@
             background-color: #111a1e; 
             color: #ffffff;
             overflow-x: hidden;
+            /* إخفاء مؤشر الماوس الافتراضي للكمبيوتر لاستبداله بالمؤشر المضيء الاحترافي */
+            cursor: none; 
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        a, button {
+            /* الحفاظ على إخفاء الماوس فوق الأزرار ليعمل التأثير بشكل صحيح */
+            cursor: none; 
+        }
+
+        /* تصميم مؤشر الماوس المضيء المخصص */
+        .custom-cursor-glow {
+            width: 20px;
+            height: 20px;
+            background: rgba(46, 204, 113, 0.4);
+            box-shadow: 0 0 20px 6px rgba(46, 204, 113, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none; /* منع المؤشر من حجب النقر على الروابط */
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s, background-color 0.2s, box-shadow 0.2s;
+        }
+
+        /* تأثير التكبير والتوهج عند التمرير فوق الروابط أو الأزرار */
+        .custom-cursor-glow.hovered {
+            width: 50px;
+            height: 50px;
+            background: rgba(46, 204, 113, 0.2);
+            box-shadow: 0 0 30px 10px rgba(46, 204, 113, 0.7);
+            border: 2px solid rgba(46, 204, 113, 0.8);
         }
 
         /* Navigation Bar */
@@ -126,7 +153,6 @@
             animation: floatUp 15s infinite linear;
         }
 
-        /* إعطاء أحجام وأوقات مختلفة لكل جزيء لتبدو الحركة عشوائية واحترافية */
         .particle:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 12s; animation-delay: 0s; }
         .particle:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 18s; animation-delay: 2s; background: rgba(46, 204, 113, 0.15); }
         .particle:nth-child(3) { left: 40%; width: 60px; height: 60px; animation-duration: 22s; animation-delay: 4s; }
@@ -378,6 +404,12 @@
 
         /* Responsive Mobile Layout */
         @media (max-width: 968px) {
+            body, a, button {
+                cursor: auto; /* إعادة الماوس الافتراضي في الموبايل لأن التتبع مخصص لشاشات الكمبيوتر فقط */
+            }
+            .custom-cursor-glow {
+                display: none; /* إخفاء دائرة التتبع على شاشات اللمس لمنع العشوائية */
+            }
             .hero-section {
                 background-size: cover;
                 background-position: 70% top; 
@@ -420,6 +452,8 @@
     </style>
 </head>
 <body>
+
+    <div class="custom-cursor-glow" id="glowCursor"></div>
 
     <nav>
         <div class="nav-logo">THE<span>PRO</span></div>
@@ -524,6 +558,44 @@
     <footer>
         <p>© 2026 Salameh Atawneh. All rights reserved.</p>
     </footer>
+
+    <script>
+        const cursorGlow = document.getElementById('glowCursor');
+        let mouseX = 0, mouseY = 0; // إحداثيات الماوس الحقيقية
+        let cursorX = 0, cursorY = 0; // إحداثيات الدائرة المتوهجة
+
+        // تتبع حركة الفأرة وتحديث الإحداثيات
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // دالة الحركة السلسة بتباطؤ احترافي (Inertia effect)
+        function animateCursor() {
+            // حساب المسافة المتبقية وضربها بنسبة التباطؤ (0.15 يعطي لحاقاً ناعماً وممتازاً)
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            
+            cursorGlow.style.left = cursorX + 'px';
+            cursorGlow.style.top = cursorY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // إضافة تأثير التوهج والتكبير عند الوقوف فوق الروابط والأزرار والكروت
+        const interactiveElements = document.querySelectorAll('a, button, .service-card, .contact-item');
+        interactiveElements.forEach(elem => {
+            elem.addEventListener('mouseenter', () => {
+                cursorGlow.classList.add('hovered');
+            });
+            elem.addEventListener('mouseleave', () => {
+                cursorGlow.classList.add('hovered');
+                // مهلة صغيرة ناعمة عند المغادرة
+                setTimeout(() => { cursorGlow.classList.remove('hovered'); }, 50);
+            });
+        });
+    </script>
 
 </body>
 </html>
