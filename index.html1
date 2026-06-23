@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بورتفوليو أعمالي | مصمم جرافيك</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0f0f11; color: #ffffff; padding: 20px; }
+        header { text-align: center; padding: 60px 0 40px 0; }
+        header h1 { font-size: 2.8rem; color: #00ffcc; margin-bottom: 15px; letter-spacing: 1px; }
+        header p { color: #a0a0aa; font-size: 1.2rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 40px auto; 
+        }
+        
+        .project-card { 
+            background: #18181c; 
+            border-radius: 16px; 
+            overflow: hidden; 
+            border: 1px solid #27272a;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .project-card:hover { 
+            transform: translateY(-8px); 
+            border-color: #00ffcc;
+        }
+        .project-img { width: 100%; height: 240px; background: #27272a; display: flex; align-items: center; justify-content: center; color: #888; font-weight: bold; font-size: 1.1rem; }
+        .project-info { padding: 25px; }
+        .project-info h3 { margin-bottom: 12px; color: #ffffff; font-size: 1.4rem; }
+        .project-info p { color: #a0a0aa; font-size: 0.95rem; line-height: 1.6; }
+        
+        .contact-section { text-align: center; margin: 50px 0; }
+        .contact-section h2 { margin-bottom: 20px; color: #ffffff; }
+        .btn { 
+            display: inline-block; 
+            padding: 12px 30px; 
+            margin: 10px; 
+            border-radius: 30px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: all 0.3s ease; 
+        }
+        .btn-primary { background-color: #00ffcc; color: #0f0f11; }
+        .btn-primary:hover { background-color: #00ccaa; transform: scale(1.05); }
+        .btn-secondary { border: 2px solid #27272a; color: #ffffff; }
+        .btn-secondary:hover { border-color: #00ffcc; color: #00ffcc; background: #18181c; }
+
+        footer { text-align: center; padding: 40px 0; color: #71717a; border-top: 1px solid #27272a; margin-top: 60px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>سلامة العطاونة</h1>
+        <p>مصمم جرافيك محترف | أبتكر هويات بصرية وتصاميم إعلانية تترك أثراً وتصنع فارقاً لعلامتك التجارية.</p>
+    </header>
+
+    <main class="portfolio-grid">
+        <div class="project-card">
+            <div class="project-img">معرض الصور قريباً</div>
+            <div class="project-info">
+                <h3>تصميم الهويات البصرية واللوقو</h3>
+                <p>بناء استراتيجيات بصرية متكاملة تشمل الشعارات، الألوان، الخطوط، وتطبيقات الهوية لتجعل مشروعك فريداً وراسخاً في أذهان عملائك.</p>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-img">معرض الصور قريباً</div>
+            <div class="project-info">
+                <h3>تصاميم السوشيال ميديا والإعلانات</h3>
+                <p>صناعة بوسترات وحملات إعلانية بصرية عالية التأثير لمنصات التواصل الاجتماعي، مصممة خصيصاً لزيادة التفاعل وجذب الفئة المستهدفة.</p>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-img">معرض الصور قريباً</div>
+            <div class="project-info">
+                <h3>تصميم وتغليف المنتجات (Packaging)</h3>
+                <p>ابتكار أشكال وقوالب تغليف خارجية للمنتجات تجمع بين الجمال البصري والوظيفة العملية لتتميز على رفوف المنافسة.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="contact-section">
+        <h2>هل لديك مشروع ترغب في البدء به؟</h2>
+        <a href="https://wa.me/962700000000" target="_blank" class="btn btn-primary">تواصل معي عبر واتساب</a>
+        <a href="https://www.behance.net" target="_blank" class="btn btn-secondary">تصفح حسابي على Behance</a>
+    </section>
+
+    <footer>
+        <p>© 2026 سلامة العطاونة. جميع الحقوق محفوظة.</p>
+    </footer>
+
+</body>
+</html>
