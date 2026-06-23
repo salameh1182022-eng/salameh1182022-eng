@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salameh Atawneh | Professional Portfolio</title>
+    <!-- Embedding Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ======================================================= */
+        /* HERE YOU CAN CHANGE YOUR IMAGE EASILY / غير صورتك هنا بسهولة  */
+        /* ======================================================= */
+        :root {
+            --hero-bg-image: url('my-photo.png.png'); /* اكتب اسم صورتك وامتدادها هنا فقط */
+        }
+        /* ======================================================= */
+
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background-color: #111a1e; 
+            color: #ffffff;
+            overflow-x: hidden;
+            cursor: none; 
+        }
+
+        a, button, .service-card, .portfolio-card {
+            cursor: none; 
+        }
+
+        /* 1. تأثير الوهج السينمائي الخلفي المتابع للماوس */
+        .ambient-mouse-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.08) 0%, rgba(46, 204, 113, 0.03) 45%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0; 
+            transform: translate(-50%, -50%);
+            will-change: transform;
+        }
+
+        /* 2. مؤشر الماوس الاحترافي */
+        .custom-cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #2ecc71;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-cursor-ring {
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid rgba(46, 204, 113, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .custom-cursor-ring.hovered {
+            width: 65px;
+            height: 65px;
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.9);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+        }
+
+        /* تأثير الشرر أو النقر المغناطيسي */
+        .click-spark {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #2ecc71;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%) scale(1);
+            animation: sparkEffect 0.5s ease-out forwards;
+        }
+
+        @keyframes sparkEffect {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(4); opacity: 0; border-width: 1px; }
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: table;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 25px;
+            position: absolute; 
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+        .nav-logo {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+        .nav-logo span {
+            color: #2ecc71; 
+        }
+        .nav-links {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: right;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin-left: 25px;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            transition: color 0.3s ease;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6); 
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #2ecc71;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh; 
+            background-image: var(--hero-bg-image); 
+            background-size: contain; 
+            background-position: right center; 
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            background-color: #111a1e; 
+            overflow: hidden;
+        }
+
+        /* تظليل متدرج سينمائي للكمبيوتر */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(17, 26, 30, 1) 35%, rgba(17, 26, 30, 0.5) 70%, rgba(17, 26, 30, 0.2) 100%),
+                        linear-gradient(to bottom, rgba(17, 26, 30, 0) 80%, rgba(17, 26, 30, 1) 100%);
+            z-index: 1;
+        }
+
+        /* جزيئات عائمة */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            display: block;
+            background: rgba(46, 204, 113, 0.15);
+            border-radius: 50%;
+            bottom: -100px;
+            animation: floatUp 15s infinite linear;
+        }
+
+        .particle:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 30%; width: 20px; height: 20px; animation-duration: 18s; background: rgba(46, 204, 113, 0.1); }
+        .particle:nth-child(3) { left: 50%; width: 50px; height: 50px; animation-duration: 22s; }
+        .particle:nth-child(4) { left: 70%; width: 30px; height: 30px; animation-duration: 16s; }
+        .particle:nth-child(5) { left: 90%; width: 45px; height: 45px; animation-duration: 20s; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) scale(1); opacity: 0; }
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 25px 0 25px;
+            position: relative;
+            z-index: 2; 
+        }
+        
+        .hero-content {
+            width: 55%; 
+        }
+        .hero-welcome {
+            font-size: 1.5rem;
+            color: #2ecc71;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .hero-desc {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            max-width: 550px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        /* Buttons */
+        .btn-emerald {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: #111a1e;
+            padding: 12px 35px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(46, 204, 113, 0.3);
+        }
+        .btn-emerald:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        /* Quick Contact Bar */
+        .quick-contact-bar {
+            max-width: 1200px;
+            margin: -50px auto 80px auto;
+            padding: 0 25px;
+            position: relative;
+            z-index: 5;
+        }
+        .contact-item {
+            display: inline-block;
+            width: 30%;
+            border-right: 1px solid #2e3f47;
+            padding-left: 20px;
+        }
+        .contact-item:last-child {
+            border-right: none;
+        }
+        .contact-item-title {
+            font-size: 0.85rem;
+            color: #2ecc71;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .contact-item-value {
+            font-size: 1.05rem;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #0d1417; 
+            padding: 100px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        .about-image-side {
+            width: 40%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .about-img-placeholder {
+            width: 90%;
+            height: 440px;
+            background: #161f24;
+            border-radius: 16px;
+            border: 1px solid #24333a;
+            line-height: 440px;
+            text-align: center;
+            color: #4a5d66;
+            font-weight: bold;
+        }
+        .about-content-side {
+            width: 55%;
+            display: inline-block;
+            vertical-align: top;
+            padding-left: 40px;
+        }
+        .about-tag {
+            color: #2ecc71;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .about-heading {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        .about-text {
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .info-table {
+            width: 100%;
+            margin-bottom: 35px;
+            border-collapse: collapse;
+        }
+        .info-table td {
+            padding: 10px 0;
+            font-size: 1rem;
+        }
+        .info-label {
+            color: #ffffff;
+            font-weight: 700;
+            width: 25%;
+        }
+        .info-value {
+            color: #94a3b8;
+        }
+
+        /* Services Section */
+        .services-section {
+            max-width: 1200px;
+            margin: 120px auto;
+            padding: 0 25px;
+            position: relative;
+            z-index: 2;
+        }
+        .section-title-wrapper {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        .section-title-bg {
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.02);
+            position: absolute;
+            top: -40px;
+            left: -10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            user-select: none;
+        }
+        .section-title-main {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .service-card {
+            background-color: #162227;
+            border: 1px solid #203139;
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #2ecc71;
+            background-color: #1a292f;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .service-icon {
+            font-size: 2.2rem;
+            color: #2ecc71;
+            margin-bottom: 25px;
+        }
+        .service-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .service-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            max-width: 1200px;
+            margin: 140px auto;
+            padding: 0 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 40px;
+        }
+
+        .portfolio-card {
+            position: relative;
+            background-color: #162227;
+            border: 1px solid #203139;
+            border-radius: 16px;
+            height: 400px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .portfolio-img-box {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(13, 20, 23, 0.95) 0%, rgba(13, 20, 23, 0.4) 50%, rgba(0,0,0,0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 35px;
+            z-index: 2;
+            transition: background 0.4s ease;
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            transform: translateY(10px);
+            transition: transform 0.4s ease, color 0.4s ease;
+        }
+
+        .portfolio-card p {
+            font-size: 0.95rem;
+            color: #2ecc71; 
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        /* تأثيرات معرض الأعمال المتقدمة */
+        .portfolio-card:hover {
+            border-color: #2ecc71;
+            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.15);
+        }
+
+        .portfolio-card:hover .portfolio-img-box {
+            transform: scale(1.06); 
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            background: linear-gradient(to top, rgba(17, 26, 30, 0.98) 0%, rgba(17, 26, 30, 0.5) 60%, rgba(0,0,0,0) 100%);
+        }
+
+        .portfolio-card:hover h3 {
+            color: #2ecc71;
+            transform: translateY(0);
+        }
+
+        .portfolio-card:hover p {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #1a262c;
+            background-color: #0d1417;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 968px) {
+            body, a, button, .service-card, .portfolio-card {
+                cursor: auto; 
+            }
+            .custom-cursor-dot, .custom-cursor-ring, .ambient-mouse-glow {
+                display: none; 
+            }
+            .hero-section {
+                background-size: cover;
+                background-position: 70% top; 
+                min-height: 100vh;
+            }
+            .hero-section::before {
+                background: linear-gradient(to bottom, rgba(17, 26, 30, 0.6) 0%, rgba(17, 26, 30, 0.9) 100%);
+            }
+            .hero-content, .about-image-side, .about-content-side {
+                width: 100%;
+                display: block;
+                padding: 0;
+            }
+            .hero-content {
+                text-align: center;
+                padding-top: 60px;
+            }
+            .hero-desc {
+                margin: 0 auto 35px auto;
+            }
+            .about-image-side {
+                margin-bottom: 50px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr; 
+                gap: 25px;
+            }
+            .portfolio-card {
+                height: 300px;
+            }
+            .contact-item {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #2e3f47;
+                padding: 15px 0;
+            }
+            .contact-item:last-child {
+                border-bottom: none;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- عناصر الإضاءة والمؤشر السينمائي -->
+    <div class="ambient-mouse-glow" id="ambientGlow"></div>
+    <div class="custom-cursor-dot" id="cursorDot"></div>
+    <div class="custom-cursor-ring" id="cursorRing"></div>
+
+    <nav>
+        <div class="nav-logo">THE<span>PRO</span></div>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#">Resume</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="bg-animation">
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <h4 class="hero-welcome">Hi There!</h4>
+                <h1 class="hero-title">I am Salameh Atawneh</h1>
+                <p class="hero-desc">Professional Graphic Designer | I craft visually stunning brand identities and high-impact commercial assets that elevate business narratives.</p>
+                <a href="https://wa.me/962700000000" target="_blank" class="btn-emerald">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="quick-contact-bar">
+        <div class="contact-item">
+            <div class="contact-item-title">Phone</div>
+            <div class="contact-item-value">+962XXXXXXXXX</div>
+        </div><!--
+     --><div class="contact-item">
+            <div class="contact-item-title">Email</div>
+            <div class="contact-item-value">salameh@example.com</div>
+        </div><!--
+     --><div class="contact-item">
+            <div class="contact-item-title">Location</div>
+            <div class="contact-item-value">Amman, Jordan</div>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image-side">
+                <div class="about-img-placeholder">Featured Design / Asset</div>
+            </div><!--
+         --><div class="about-content-side">
+                <h4 class="about-tag">Who am I?</h4>
+                <h2 class="about-heading">I'm Salameh Atawneh, a Visual Brand Designer and Creative Strategist...</h2>
+                <p class="about-text">Dedicated to transforming abstract ideas into powerful, pixel-perfect visual experiences. I specialize in developing cohesive brand identities, high-impact marketing visuals, and commercial designs built to resonate and leave a lasting impression.</p>
+                
+                <table class="info-table">
+                    <tr>
+                        <td class="info-label">Name:</td>
+                        <td class="info-value">Salameh Atawneh</td>
+                        <td class="info-label">From:</td>
+                        <td class="info-value">Amman, Jordan</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Age:</td>
+                        <td class="info-value">25</td>
+                        <td class="info-label">Email:</td>
+                        <td class="info-value">salameh@example.com</td>
+                    </tr>
+                </table>
+
+                <a href="#" class="btn-emerald">Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="section-title-wrapper">
+            <div class="section-title-bg">SERVICES</div>
+            <h2 class="section-title-main">My Core Expertise</h2>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✦</div>
+                <h3>Brand Identity Design</h3>
+                <p>Creating complete visual ecosystems including logos, custom typography, color palettes, and brand guidelines to anchor your market position.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">❖</div>
+                <h3>Social Media Graphics</h3>
+                <p>Designing high-conversion commercial advertisements, milestone posters, and social assets tailored for maximum audience engagement.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚃</div>
+                <h3>Packaging Design</h3>
+                <p>Developing premium commercial structural forms and print layouts for packaging that pop on retail shelves and enrich consumer experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم معرض الأعمال التفاعلي الموحد -->
+    <section class="portfolio-section">
+        <div class="section-title-wrapper">
+            <div class="section-title-bg">PORTFOLIO</div>
+            <h2 class="section-title-main">Featured Projects</h2>
+        </div>
+
+        <div class="portfolio-grid">
+            <!-- مشروع 1 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img-box" style="background-image: url('project1.jpg'); background-color: #1a272c;"></div>
+                <div class="portfolio-overlay">
+                    <p>Brand Identity</p>
+                    <h3>Creative Branding Concept</h3>
+                </div>
+            </div>
+
+            <!-- مشروع 2 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img-box" style="background-image: url('project2.jpg'); background-color: #1a272c;"></div>
+                <div class="portfolio-overlay">
+                    <p>Social Media Design</p>
+                    <h3>High-Impact Campaign Assets</h3>
+                </div>
+            </div>
+
+            <!-- مشروع 3 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img-box" style="background-image: url('project3.jpg'); background-color: #1a272c;"></div>
+                <div class="portfolio-overlay">
+                    <p>Packaging Identity</p>
+                    <h3>Premium Commercial Packaging</h3>
+                </div>
+            </div>
+
+            <!-- مشروع 4 -->
+            <div class="portfolio-card">
+                <div class="portfolio-img-box" style="background-image: url('project4.jpg'); background-color: #1a272c;"></div>
+                <div class="portfolio-overlay">
+                    <p>Visual Strategy</p>
+                    <h3>Digital Marketing Artwork</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Salameh Atawneh. All rights reserved.</p>
+    </footer>
+
+    <!-- سكربت الإضاءة والماوس والشرر الاحترافي -->
+    <script>
+        const cDot = document.getElementById('cursorDot');
+        const cRing = document.getElementById('cursorRing');
+        const ambientGlow = document.getElementById('ambientGlow');
+
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+        let glowX = 0, glowY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cDot.style.left = mouseX + 'px';
+            cDot.style.top = mouseY + 'px';
+        });
+
+        function updateCoordinates() {
+            ringX += (mouseX - ringX) * 0.2;
+            ringY += (mouseY - ringY) * 0.2;
+            cRing.style.left = ringX + 'px';
+            cRing.style.top = ringY + 'px';
+
+            glowX += (mouseX - glowX) * 0.06;
+            glowY += (mouseY - glowY) * 0.06;
+            ambientGlow.style.left = glowX + 'px';
+            ambientGlow.style.top = glowY + 'px';
+
+            requestAnimationFrame(updateCoordinates);
+        }
+        updateCoordinates();
+
+        // تفعيل تفاعل الماوس المضيء مع الأقسام ومعرض الأعمال
+        const interactiveElements = document.querySelectorAll('a, button, .service-card, .contact-item, .portfolio-card');
+        interactiveElements.forEach(item => {
+            item.addEventListener('mouseenter', () => cRing.classList.add('hovered'));
+            item.addEventListener('mouseleave', () => cRing.classList.remove('hovered'));
+        });
+
+        document.addEventListener('click', (e) => {
+            const spark = document.createElement('div');
+            spark.classList.add('click-spark');
+            spark.style.left = e.clientX + 'px';
+            spark.style.top = e.clientY + 'px';
+            document.body.appendChild(spark);
+            setTimeout(() => spark.remove(), 500);
+        });
+    </script>
+
+</body>
+</html>
