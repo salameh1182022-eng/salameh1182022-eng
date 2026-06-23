@@ -29,38 +29,77 @@
             background-color: #111a1e; 
             color: #ffffff;
             overflow-x: hidden;
-            /* إخفاء مؤشر الماوس الافتراضي للكمبيوتر لاستبداله بالمؤشر المضيء الاحترافي */
+            cursor: none; /* إخفاء الماوس الأصلي لتقديم تجربة سينمائية */
+        }
+
+        a, button, .service-card {
             cursor: none; 
         }
 
-        a, button {
-            /* الحفاظ على إخفاء الماوس فوق الأزرار ليعمل التأثير بشكل صحيح */
-            cursor: none; 
-        }
-
-        /* تصميم مؤشر الماوس المضيء المخصص */
-        .custom-cursor-glow {
-            width: 20px;
-            height: 20px;
-            background: rgba(46, 204, 113, 0.4);
-            box-shadow: 0 0 20px 6px rgba(46, 204, 113, 0.5);
-            border-radius: 50%;
+        /* 1. تأثير الوهج السينمائي الخلفي المتابع للماوس */
+        .ambient-mouse-glow {
             position: fixed;
             top: 0;
             left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.08) 0%, rgba(46, 204, 113, 0.03) 45%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0; /* خلف المحتوى لتضيء العناصر من ورائها */
             transform: translate(-50%, -50%);
-            pointer-events: none; /* منع المؤشر من حجب النقر على الروابط */
-            z-index: 9999;
-            transition: width 0.2s, height 0.2s, background-color 0.2s, box-shadow 0.2s;
+            will-change: transform;
         }
 
-        /* تأثير التكبير والتوهج عند التمرير فوق الروابط أو الأزرار */
-        .custom-cursor-glow.hovered {
-            width: 50px;
-            height: 50px;
-            background: rgba(46, 204, 113, 0.2);
-            box-shadow: 0 0 30px 10px rgba(46, 204, 113, 0.7);
-            border: 2px solid rgba(46, 204, 113, 0.8);
+        /* 2. مؤشر الماوس الاحترافي (نقطة مركزية + حلقة ذكية) */
+        .custom-cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #2ecc71;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-cursor-ring {
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid rgba(46, 204, 113, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* حالة التفاعل فوق الأزرار والروابط */
+        .custom-cursor-ring.hovered {
+            width: 65px;
+            height: 65px;
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.9);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+        }
+
+        /* تأثير الشرر أو النقر المغناطيسي */
+        .click-spark {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #2ecc71;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%) scale(1);
+            animation: sparkEffect 0.5s ease-out forwards;
+        }
+
+        @keyframes sparkEffect {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(4); opacity: 0; border-width: 1px; }
         }
 
         /* Navigation Bar */
@@ -133,7 +172,7 @@
             z-index: 1;
         }
 
-        /* حركة الخلفية الديناميكية - الجزيئات المضيئة */
+        /* جزيئات عائمة */
         .bg-animation {
             position: absolute;
             top: 0;
@@ -147,34 +186,23 @@
         .particle {
             position: absolute;
             display: block;
-            background: rgba(46, 204, 113, 0.2);
+            background: rgba(46, 204, 113, 0.15);
             border-radius: 50%;
             bottom: -100px;
             animation: floatUp 15s infinite linear;
         }
 
-        .particle:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 12s; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 18s; animation-delay: 2s; background: rgba(46, 204, 113, 0.15); }
-        .particle:nth-child(3) { left: 40%; width: 60px; height: 60px; animation-duration: 22s; animation-delay: 4s; }
-        .particle:nth-child(4) { left: 55%; width: 30px; height: 30px; animation-duration: 15s; animation-delay: 1s; background: rgba(46, 204, 113, 0.3); }
-        .particle:nth-child(5) { left: 70%; width: 50px; height: 50px; animation-duration: 25s; animation-delay: 5s; }
-        .particle:nth-child(6) { left: 85%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 3s; }
+        .particle:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 30%; width: 20px; height: 20px; animation-duration: 18s; background: rgba(46, 204, 113, 0.1); }
+        .particle:nth-child(3) { left: 50%; width: 50px; height: 50px; animation-duration: 22s; }
+        .particle:nth-child(4) { left: 70%; width: 30px; height: 30px; animation-duration: 16s; }
+        .particle:nth-child(5) { left: 90%; width: 45px; height: 45px; animation-duration: 20s; }
 
         @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-110vh) scale(1) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) scale(1); opacity: 0; }
         }
 
         .hero-container {
@@ -404,11 +432,11 @@
 
         /* Responsive Mobile Layout */
         @media (max-width: 968px) {
-            body, a, button {
-                cursor: auto; /* إعادة الماوس الافتراضي في الموبايل لأن التتبع مخصص لشاشات الكمبيوتر فقط */
+            body, a, button, .service-card {
+                cursor: auto; 
             }
-            .custom-cursor-glow {
-                display: none; /* إخفاء دائرة التتبع على شاشات اللمس لمنع العشوائية */
+            .custom-cursor-dot, .custom-cursor-ring, .ambient-mouse-glow {
+                display: none; /* إخفاء التأثيرات على الموبايل لعدم وجود ماوس */
             }
             .hero-section {
                 background-size: cover;
@@ -453,7 +481,9 @@
 </head>
 <body>
 
-    <div class="custom-cursor-glow" id="glowCursor"></div>
+    <div class="ambient-mouse-glow" id="ambientGlow"></div>
+    <div class="custom-cursor-dot" id="cursorDot"></div>
+    <div class="custom-cursor-ring" id="cursorRing"></div>
 
     <nav>
         <div class="nav-logo">THE<span>PRO</span></div>
@@ -468,7 +498,6 @@
 
     <section class="hero-section">
         <div class="bg-animation">
-            <span class="particle"></span>
             <span class="particle"></span>
             <span class="particle"></span>
             <span class="particle"></span>
@@ -560,40 +589,59 @@
     </footer>
 
     <script>
-        const cursorGlow = document.getElementById('glowCursor');
-        let mouseX = 0, mouseY = 0; // إحداثيات الماوس الحقيقية
-        let cursorX = 0, cursorY = 0; // إحداثيات الدائرة المتوهجة
+        const cDot = document.getElementById('cursorDot');
+        const cRing = document.getElementById('cursorRing');
+        const ambientGlow = document.getElementById('ambientGlow');
 
-        // تتبع حركة الفأرة وتحديث الإحداثيات
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+        let glowX = 0, glowY = 0;
+
+        // تتبع حركة الماوس الحقيقية
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+            
+            // النقطة المركزية تتحرك فوراً بدون تأخير
+            cDot.style.left = mouseX + 'px';
+            cDot.style.top = mouseY + 'px';
         });
 
-        // دالة الحركة السلسة بتباطؤ احترافي (Inertia effect)
-        function animateCursor() {
-            // حساب المسافة المتبقية وضربها بنسبة التباطؤ (0.15 يعطي لحاقاً ناعماً وممتازاً)
-            cursorX += (mouseX - cursorX) * 0.15;
-            cursorY += (mouseY - cursorY) * 0.15;
-            
-            cursorGlow.style.left = cursorX + 'px';
-            cursorGlow.style.top = cursorY + 'px';
-            
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
+        // دالة الحركة السلسة والانسيابية المزدوجة
+        function updateCoordinates() {
+            // حركة الحلقة بتأخير خفيف (0.2)
+            ringX += (mouseX - ringX) * 0.2;
+            ringY += (mouseY - ringY) * 0.2;
+            cRing.style.left = ringX + 'px';
+            cRing.style.top = ringY + 'px';
 
-        // إضافة تأثير التوهج والتكبير عند الوقوف فوق الروابط والأزرار والكروت
+            // حركة هالة الإضاءة الخلفية بتأخير أنعم (0.06) لتعطي إحساساً بالوزن والعمق السينمائي
+            glowX += (mouseX - glowX) * 0.06;
+            glowY += (mouseY - glowY) * 0.06;
+            ambientGlow.style.left = glowX + 'px';
+            ambientGlow.style.top = glowY + 'px';
+
+            requestAnimationFrame(updateCoordinates);
+        }
+        updateCoordinates();
+
+        // تأثير تكبير المؤشر والتفاعل
         const interactiveElements = document.querySelectorAll('a, button, .service-card, .contact-item');
-        interactiveElements.forEach(elem => {
-            elem.addEventListener('mouseenter', () => {
-                cursorGlow.classList.add('hovered');
-            });
-            elem.addEventListener('mouseleave', () => {
-                cursorGlow.classList.add('hovered');
-                // مهلة صغيرة ناعمة عند المغادرة
-                setTimeout(() => { cursorGlow.classList.remove('hovered'); }, 50);
-            });
+        interactiveElements.forEach(item => {
+            item.addEventListener('mouseenter', () => cRing.classList.add('hovered'));
+            item.addEventListener('mouseleave', () => cRing.classList.remove('hovered'));
+        });
+
+        // تأثير الشرر اللطيف عند النقر الفعلي بالماوس
+        document.addEventListener('click', (e) => {
+            const spark = document.createElement('div');
+            spark.classList.add('click-spark');
+            spark.style.left = e.clientX + 'px';
+            spark.style.top = e.clientY + 'px';
+            document.body.appendChild(spark);
+            
+            // تنظيف العنصر بعد انتهاء الحركة مباشرة
+            setTimeout(() => spark.remove(), 500);
         });
     </script>
 
