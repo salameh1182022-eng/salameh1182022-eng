@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salameh Atawneh | Professional Portfolio</title>
-    <!-- Embedding Google Fonts (Cairo for sleek corporate English look) -->
+    <!-- Embedding Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Global Styles based on the layout design */
+        /* Global Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,7 +19,7 @@
         }
         
         body {
-            background-color: #111a1e; /* Deep luxurious dark olive/emerald theme */
+            background-color: #111a1e; 
             color: #ffffff;
             overflow-x: hidden;
         }
@@ -36,7 +36,10 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px 25px;
-            position: relative;
+            position: absolute; /* لجعل القائمة تطفو فوق خلفية الصورة */
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 10;
         }
         .nav-logo {
@@ -48,7 +51,7 @@
             letter-spacing: 1px;
         }
         .nav-logo span {
-            color: #2ecc71; /* Accent Mint/Emerald Green */
+            color: #2ecc71; 
         }
         .nav-links {
             display: table-cell;
@@ -59,48 +62,51 @@
             display: inline-block;
             margin-left: 25px;
             font-size: 0.95rem;
-            color: #94a3b8;
+            color: #e2e8f0;
             transition: color 0.3s ease;
             font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* لضمان وضوح القائمة فوق الصورة */
         }
         .nav-links a:hover, .nav-links a.active {
             color: #2ecc71;
         }
 
-        /* Hero Section with Cinematic Image Overlay */
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 100px 25px 140px 25px;
+        /* Hero Section as Full Screen Background Image */
+        .hero-section {
             position: relative;
-            min-height: 550px;
-        }
-        
-        /* Profile Image Cinematic Placement */
-        .hero-bg-photo {
-            position: absolute;
-            right: 0; /* Placed on the right to match LTR text layout */
-            top: 10%;
-            width: 45%;
-            height: 90%;
-            background-image: url('my-photo.png'); 
-            background-size: contain;
-            background-position: center right;
+            width: 100%;
+            min-height: 100vh; /* يمتد على كامل ارتفاع الشاشة */
+            background-image: url('my-photo.png'); /* صورتك المرفوعة */
+            background-size: cover; /* تجعل الصورة تغطي الواجهة بالكامل */
+            background-position: center center;
             background-repeat: no-repeat;
-            z-index: 1;
-            /* Fade masks to seamlessly blend the image into the background color */
-            mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%),
-                        linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%);
-            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%),
-                                linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%);
-            filter: grayscale(10%) brightness(85%) contrast(110%);
+            display: flex;
+            align-items: center;
         }
 
-        .hero-content {
-            width: 60%;
+        /* طبقة تظليل سينمائية داكنة فوق الصورة بالكامل ليتداخل التصميم ويبرز النص */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(17, 26, 30, 0.4) 0%, rgba(17, 26, 30, 0.85) 90%);
+            z-index: 1;
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 25px 0 25px;
             position: relative;
-            z-index: 5;
-            padding-top: 40px;
+            z-index: 2; /* فوق طبقة التظليل */
+        }
+        
+        .hero-content {
+            width: 65%; /* جعل النص يأخذ مساحة أنيقة على اليسار */
         }
         .hero-welcome {
             font-size: 1.5rem;
@@ -113,16 +119,18 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         .hero-desc {
             font-size: 1.15rem;
-            color: #94a3b8;
+            color: #cbd5e1;
             line-height: 1.7;
             margin-bottom: 35px;
-            max-width: 500px;
+            max-width: 550px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
 
-        /* Premium Buttons */
+        /* Buttons */
         .btn-emerald {
             display: inline-block;
             background-color: #2ecc71;
@@ -134,18 +142,17 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 14px rgba(46, 204, 113, 0.2);
+            box-shadow: 0 4px 14px rgba(46, 204, 113, 0.3);
         }
         .btn-emerald:hover {
             background-color: #27ae60;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
         }
 
-        /* Quick Contact Bar below Hero */
+        /* Quick Contact Bar */
         .quick-contact-bar {
             max-width: 1200px;
-            margin: -40px auto 80px auto;
+            margin: -50px auto 80px auto;
             padding: 0 25px;
             position: relative;
             z-index: 5;
@@ -176,8 +183,6 @@
         .about-section {
             background-color: #0d1417; 
             padding: 100px 0;
-            position: relative;
-            z-index: 5;
         }
         .about-container {
             max-width: 1200px;
@@ -225,7 +230,6 @@
             margin-bottom: 30px;
         }
 
-        /* Personal Info Table */
         .info-table {
             width: 100%;
             margin-bottom: 35px;
@@ -249,8 +253,6 @@
             max-width: 1200px;
             margin: 120px auto;
             padding: 0 25px;
-            position: relative;
-            z-index: 5;
         }
         .section-title-wrapper {
             position: relative;
@@ -275,7 +277,6 @@
             z-index: 2;
         }
 
-        /* Services Grid Layout */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -287,7 +288,6 @@
             border-radius: 12px;
             padding: 40px 30px;
             transition: all 0.3s ease;
-            position: relative;
         }
         .service-card:hover {
             transform: translateY(-10px);
@@ -304,7 +304,6 @@
             font-size: 1.35rem;
             font-weight: 700;
             margin-bottom: 15px;
-            color: #ffffff;
         }
         .service-card p {
             color: #94a3b8;
@@ -320,23 +319,20 @@
             font-size: 0.9rem;
             border-top: 1px solid #1a262c;
             background-color: #0d1417;
-            position: relative;
-            z-index: 5;
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive */
         @media (max-width: 968px) {
             .hero-content, .about-image-side, .about-content-side {
                 width: 100%;
                 display: block;
                 padding: 0;
             }
-            .hero-bg-photo {
-                width: 100%;
-                height: 50%;
-                top: auto;
-                bottom: 0;
-                opacity: 0.2;
+            .hero-content {
+                text-align: center;
+            }
+            .hero-desc {
+                margin: 0 auto 35px auto;
             }
             .about-image-side {
                 margin-bottom: 50px;
@@ -361,7 +357,6 @@
 </head>
 <body>
 
-    <!-- Header / Navigation -->
     <nav>
         <div class="nav-logo">THE<span>PRO</span></div>
         <div class="nav-links">
@@ -373,20 +368,18 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-container">
-        <!-- Cinematic Profile Placeholder Layer -->
-        <div class="hero-bg-photo"></div>
-
-        <div class="hero-content">
-            <h4 class="hero-welcome">Hi There!</h4>
-            <h1 class="hero-title">I am Salameh Atawneh</h1>
-            <p class="hero-desc">Professional Graphic Designer | I craft visually stunning brand identities and high-impact commercial assets that elevate business narratives.</p>
-            <a href="https://wa.me/962700000000" target="_blank" class="btn-emerald">Contact Me</a>
+    <!-- واجهة هيرو ممتدة بالكامل بخلفية صورتك الحقيقية -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h4 class="hero-welcome">Hi There!</h4>
+                <h1 class="hero-title">I am Salameh Atawneh</h1>
+                <p class="hero-desc">Professional Graphic Designer | I craft visually stunning brand identities and high-impact commercial assets that elevate business narratives.</p>
+                <a href="https://wa.me/962700000000" target="_blank" class="btn-emerald">Contact Me</a>
+            </div>
         </div>
     </section>
 
-    <!-- Quick Contact Row -->
     <div class="quick-contact-bar">
         <div class="contact-item">
             <div class="contact-item-title">Phone</div>
@@ -402,7 +395,6 @@
         </div>
     </div>
 
-    <!-- About Me Section -->
     <section class="about-section">
         <div class="about-container">
             <div class="about-image-side">
@@ -433,7 +425,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services-section">
         <div class="section-title-wrapper">
             <div class="section-title-bg">SERVICES</div>
@@ -441,21 +432,18 @@
         </div>
 
         <div class="services-grid">
-            <!-- Service 1 -->
             <div class="service-card">
                 <div class="service-icon">✦</div>
                 <h3>Brand Identity Design</h3>
                 <p>Creating complete visual ecosystems including logos, custom typography, color palettes, and brand guidelines to anchor your market position.</p>
             </div>
 
-            <!-- Service 2 -->
             <div class="service-card">
                 <div class="service-icon">❖</div>
                 <h3>Social Media Graphics</h3>
                 <p>Designing high-conversion commercial advertisements, milestone posters, and social assets tailored for maximum audience engagement.</p>
             </div>
 
-            <!-- Service 3 -->
             <div class="service-card">
                 <div class="service-icon">⚃</div>
                 <h3>Packaging Design</h3>
@@ -464,7 +452,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>© 2026 Salameh Atawneh. All rights reserved.</p>
     </footer>
