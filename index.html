@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salameh Atawneh | Professional Portfolio</title>
-    <!-- Embedding Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* ======================================================= */
+        /* HERE YOU CAN CHANGE YOUR IMAGE EASILY / غير صورتك هنا بسهولة  */
+        /* ======================================================= */
+        :root {
+            --hero-bg-image: url('my-photo.png.png'); /* اكتب اسم صورتك وامتدادها هنا فقط */
+        }
+        /* ======================================================= */
+
         /* Global Styles */
         * {
             box-sizing: border-box;
@@ -76,7 +83,7 @@
             position: relative;
             width: 100%;
             min-height: 100vh; 
-            background-image: url('my-photo.png.png'); 
+            background-image: var(--hero-bg-image); /* الكود يستدعي الصورة تلقائياً من الأعلى */
             background-size: contain; 
             background-position: right center; 
             background-repeat: no-repeat;
@@ -323,14 +330,13 @@
             background-color: #0d1417;
         }
 
-        /* ضبط الاستجابة للموبايل والتلفونات بشكل دقيق وعميق */
+        /* Responsive Mobile Layout */
         @media (max-width: 968px) {
             .hero-section {
-                background-size: cover; /* جعل الصورة تفرش كامل شاشة الموبايل العمودية */
-                background-position: 70% top; /* إزاحة الصورة لإظهار ملامح وجهك وجسمك العلوي بدلاً من اليد */
+                background-size: cover;
+                background-position: 70% top; 
                 min-height: 100vh;
             }
-            /* تظليل مخصص للموبايل لضمان وضوح النص تماماً فوق الصورة */
             .hero-section::before {
                 background: linear-gradient(to bottom, rgba(17, 26, 30, 0.6) 0%, rgba(17, 26, 30, 0.9) 100%);
             }
@@ -380,7 +386,6 @@
         </div>
     </nav>
 
-    <!-- واجهة هيرو متوافقة 100% مع الكمبيوتر والموبايل -->
     <section class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
@@ -396,12 +401,10 @@
         <div class="contact-item">
             <div class="contact-item-title">Phone</div>
             <div class="contact-item-value">+962XXXXXXXXX</div>
-        </div><!--
-     --><div class="contact-item">
+        </div><div class="contact-item">
             <div class="contact-item-title">Email</div>
             <div class="contact-item-value">salameh@example.com</div>
-        </div><!--
-     --><div class="contact-item">
+        </div><div class="contact-item">
             <div class="contact-item-title">Location</div>
             <div class="contact-item-value">Amman, Jordan</div>
         </div>
@@ -411,8 +414,7 @@
         <div class="about-container">
             <div class="about-image-side">
                 <div class="about-img-placeholder">Featured Design / Asset</div>
-            </div><!--
-         --><div class="about-content-side">
+            </div><div class="about-content-side">
                 <h4 class="about-tag">Who am I?</h4>
                 <h2 class="about-heading">I'm Salameh Atawneh, a Visual Brand Designer and Creative Strategist...</h2>
                 <p class="about-text">Dedicated to transforming abstract ideas into powerful, pixel-perfect visual experiences. I specialize in developing cohesive brand identities, high-impact marketing visuals, and commercial designs built to resonate and leave a lasting impression.</p>
