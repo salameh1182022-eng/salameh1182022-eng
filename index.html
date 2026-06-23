@@ -13,7 +13,7 @@
         /* HERE YOU CAN CHANGE YOUR IMAGE EASILY / غير صورتك هنا بسهولة  */
         /* ======================================================= */
         :root {
-            --hero-bg-image: url('32424444.png'); /* اكتب اسم صورتك وامتدادها هنا فقط */
+            --hero-bg-image: url('my-photo.png.png'); /* اكتب اسم صورتك وامتدادها هنا فقط */
         }
         /* ======================================================= */
 
@@ -83,13 +83,14 @@
             position: relative;
             width: 100%;
             min-height: 100vh; 
-            background-image: var(--hero-bg-image); /* الكود يستدعي الصورة تلقائياً من الأعلى */
+            background-image: var(--hero-bg-image); 
             background-size: contain; 
             background-position: right center; 
             background-repeat: no-repeat;
             display: flex;
             align-items: center;
             background-color: #111a1e; 
+            overflow: hidden;
         }
 
         /* تظليل متدرج سينمائي للكمبيوتر */
@@ -103,6 +104,51 @@
             background: linear-gradient(to right, rgba(17, 26, 30, 1) 35%, rgba(17, 26, 30, 0.5) 70%, rgba(17, 26, 30, 0.2) 100%),
                         linear-gradient(to bottom, rgba(17, 26, 30, 0) 80%, rgba(17, 26, 30, 1) 100%);
             z-index: 1;
+        }
+
+        /* حركة الخلفية الديناميكية - الجزيئات المضيئة */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            display: block;
+            background: rgba(46, 204, 113, 0.2);
+            border-radius: 50%;
+            bottom: -100px;
+            animation: floatUp 15s infinite linear;
+        }
+
+        /* إعطاء أحجام وأوقات مختلفة لكل جزيء لتبدو الحركة عشوائية واحترافية */
+        .particle:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 12s; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 18s; animation-delay: 2s; background: rgba(46, 204, 113, 0.15); }
+        .particle:nth-child(3) { left: 40%; width: 60px; height: 60px; animation-duration: 22s; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 55%; width: 30px; height: 30px; animation-duration: 15s; animation-delay: 1s; background: rgba(46, 204, 113, 0.3); }
+        .particle:nth-child(5) { left: 70%; width: 50px; height: 50px; animation-duration: 25s; animation-delay: 5s; }
+        .particle:nth-child(6) { left: 85%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 3s; }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .hero-container {
@@ -387,6 +433,15 @@
     </nav>
 
     <section class="hero-section">
+        <div class="bg-animation">
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+        </div>
+
         <div class="hero-container">
             <div class="hero-content">
                 <h4 class="hero-welcome">Hi There!</h4>
