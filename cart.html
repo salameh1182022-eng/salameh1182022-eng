@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hyper-Zoom Majesty - Elite Wedding Scroll</title>
+    
+    <!-- خطوط ملكية حصرية بأعلى دقة لشاشات الجوال -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Amiri:ital,wght@1,700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --velvet-black: #050508;
+            --marble-cream: #fcfbfa;
+            --pure-gold: #dfba6b;
+            --neon-gold: #ffeecc;
+            --text-dark: #1e1915;
+            --text-gold: #b38f4d;
+            --card-glass: rgba(255, 255, 255, 0.02);
+            --border-gold: rgba(223, 186, 107, 0.2);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--velvet-black);
+            color: var(--text-dark);
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* --- 1. واجهة النفق البؤري السحري (3D Hyper-Zoom Gateway) --- */
+        .hyper-zoom-screen {
+            position: fixed; inset: 0;
+            z-index: 99999;
+            background: linear-gradient(135deg, #0f0e15 0%, var(--velvet-black) 100%);
+            display: flex; justify-content: center; align-items: center;
+            perspective: 1200px;
+            overflow: hidden;
+            transition: opacity 0.5s ease 0.9s, visibility 0.5s ease 0.9s;
+        }
+
+        .portal-royal-frame {
+            position: relative; width: 88%; max-width: 380px; height: 530px;
+            background: var(--card-glass);
+            border: 1px solid var(--border-gold); border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transform-style: preserve-3d;
+        }
+
+        .hyper-seal-button {
+            width: 135px; height: 135px;
+            background: radial-gradient(circle, #dfba6b 0%, #8c6a23 100%);
+            border: 3px solid var(--neon-gold);
+            border-radius: 50%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            box-shadow: 0 20px 50px rgba(140, 106, 35, 0.4), inset 0 2px 8px rgba(255,255,255,0.4);
+            cursor: pointer;
+            position: relative;
+            transform: translateZ(50px);
+            transition: transform 0.9s cubic-bezier(0.85, 0, 0.15, 1), background 0.5s, border-radius 0.8s;
+        }
+
+        .hyper-seal-button span.seal-logo {
+            font-family: 'Cinzel Decorative', serif; color: #111;
+            font-size: 34px; font-weight: bold; transition: opacity 0.3s;
+        }
+        .hyper-seal-button span.seal-action {
+            font-size: 11px; color: #333; font-weight: bold; margin-top: -3px; transition: opacity 0.3s;
+        }
+
+        .hint-pulse-text {
+            position: absolute; bottom: 60px;
+            color: var(--pure-gold); font-size: 13px; font-weight: 700; letter-spacing: 1px;
+            animation: textPulseGlow 2s infinite ease-in-out;
+        }
+        @keyframes textPulseGlow { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        .hyper-zoom-screen.warp-active { opacity: 0; visibility: hidden; }
+        .hyper-zoom-screen.warp-active .hyper-seal-button {
+            transform: translateZ(1000px) scale(25);
+            border-radius: 0%;
+            background: var(--neon-gold);
+        }
+        .hyper-zoom-screen.warp-active .hyper-seal-button span { opacity: 0; }
+
+
+        /* --- 2. محتوى الدعوة الداخلي الملكي --- */
+        .luxury-master-canvas {
+            max-width: 450px; margin: 0 auto;
+            background-color: var(--marble-cream);
+            min-height: 100vh;
+            box-shadow: 0 0 60px rgba(0,0,0,0.8);
+            position: relative;
+            opacity: 0; transform: scale(1.05);
+            transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1) 0.4s, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.4s;
+        }
+        body.invite-loaded .luxury-master-canvas { opacity: 1; transform: scale(1); }
+
+        /* قسم هيدر الفيديو المندمج الفاخر */
+        .banner-art-box {
+            position: relative; width: 100%; height: 440px; overflow: hidden;
+            background-color: #000;
+        }
+        
+        .banner-art-box video {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: cover;
+            display: block;
+        }
+        
+        .banner-fade-gradient {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(252, 251, 250, 0.8) 80%, var(--marble-cream) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .canvas-block { padding: 50px 25px; text-align: center; }
+        .canvas-block.luxury-shading { background-color: #f4eee5; border-top: 1px dashed rgba(179, 143, 77, 0.2); border-bottom: 1px dashed rgba(179, 143, 77, 0.2); }
+
+        .quran-royal-calligraphy {
+            font-family: 'Amiri', serif; font-size: 21px; color: #111;
+            line-height: 2; font-weight: bold; max-width: 90%; margin: 0 auto 25px auto;
+        }
+
+        .elite-couple-names {
+            font-family: 'Cinzel Decorative', serif; font-size: 34px; font-weight: bold;
+            color: var(--velvet-black); margin: 20px 0;
+            background: linear-gradient(135deg, #050508 0%, var(--text-gold) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .royal-crest-divider {
+            width: 140px; height: 1px; background: var(--text-gold); margin: 25px auto; position: relative;
+        }
+        .royal-crest-divider::after {
+            content: '👑'; position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            background: var(--marble-cream); padding: 0 8px; color: var(--text-gold); font-size: 13px;
+        }
+        .canvas-block.luxury-shading .royal-crest-divider::after { background: #f4eee5; }
+
+        .dynamic-timer-row {
+            display: flex; justify-content: center; gap: 14px; margin: 25px 0; direction: ltr;
+        }
+        .timer-circle-node {
+            background: #ffffff; border: 1px solid rgba(179, 143, 77, 0.3);
+            width: 76px; height: 82px; border-radius: 16px;
+        }
+        .timer-node-val {
+            font-family: 'Cinzel Decorative', serif; font-size: 24px; font-weight: bold; color: #111;
+        }
+        .timer-node-lbl { font-size: 11px; color: #6d655e; margin-top: 4px; font-weight: 700; font-family: 'Cairo', sans-serif; }
+
+        .linear-royal-timeline { max-width: 330px; margin: 30px auto; text-align: right; border-right: 2px solid var(--text-gold); padding-right: 20px; }
+        .timeline-stop-card { position: relative; margin-bottom: 35px; }
+        .timeline-stop-card::after {
+            content: ''; position: absolute; right: -27px; top: 6px;
+            width: 12px; height: 12px; background: var(--marble-cream); border: 2.5px solid var(--text-gold); border-radius: 50%;
+            box-shadow: 0 0 8px var(--text-gold);
+        }
+        .timeline-stop-card h3 { font-size: 15px; color: #111; font-weight: 700; }
+        .timeline-stop-card p { font-size: 13px; color: #555; margin-top: 4px; line-height: 1.5; }
+
+        .dress-code-flex-panel {
+            display: flex; justify-content: center; gap: 40px; margin: 25px 0;
+        }
+        .dress-node { text-align: center; }
+        .dress-node-icon { font-size: 26px; margin-bottom: 6px; }
+        .dress-node-title { font-size: 13px; font-weight: 700; color: #111; }
+        .dress-node-desc { font-size: 11px; color: #666; margin-top: 2px; }
+
+        .wedding-rules-card {
+            background: rgba(179, 143, 77, 0.04); border: 1px dashed var(--text-gold);
+            padding: 20px; border-radius: 12px; margin-top: 25px; text-align: center;
+        }
+        .wedding-rules-card p { font-size: 13px; color: #333; line-height: 1.8; font-weight: 600; }
+
+        .vip-rsvp-container {
+            background: #ffffff; border: 1px solid #e6dfd5;
+            border-radius: 20px; padding: 35px 25px; box-shadow: 0 12px 35px rgba(0,0,0,0.02);
+        }
+        .rsvp-field-row { margin-bottom: 20px; text-align: right; }
+        .rsvp-field-row label { display: block; font-size: 13px; font-weight: 700; color: #111; margin-bottom: 8px; }
+        .rsvp-field-row input, .rsvp-field-row select {
+            width: 100%; padding: 14px 16px; border: 1px solid #dddcd8;
+            border-radius: 10px; background: #fafafa; font-family: 'Cairo', sans-serif;
+            font-size: 14px; outline: none; transition: 0.3s; text-align: right;
+        }
+        .rsvp-field-row input:focus, .rsvp-field-row select:focus { border-color: var(--text-gold); background: #fff; }
+
+        .btn-vip-action {
+            width: 100%; padding: 16px; background: #050508; color: #fff;
+            border: 1px solid var(--text-gold); border-radius: 10px; font-size: 16px; font-weight: bold;
+            cursor: pointer; font-family: 'Cairo', sans-serif; transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. واجهة النفق البؤري السحري -->
+    <div class="hyper-zoom-screen" id="hyperGate">
+        <div class="portal-royal-frame">
+            <div class="hyper-seal-button" id="vortexButton" onclick="executeHyperWarpTransition()">
+                <span class="seal-logo">R & Z</span>
+                <span class="seal-action">ENTER</span>
+            </div>
+            <div class="hint-pulse-text">المس الختم لتجربة الانتقال الملكي</div>
+        </div>
+    </div>
+
+    <!-- 2. محتوى الدعوة الفاخر المستقر بالكامل خلف النفق الضوئي -->
+    <div class="luxury-master-canvas">
+        
+        <div class="banner-art-box">
+            <!-- تم تعديل كود الاستدعاء ليتناسب مع الاسم الحقيقي للفيديو على جهازك لتشغيله بنجاح -->
+            <video autoplay muted loop playsinline id="innerWeddingVideo" preload="auto" width="100%" height="100%">
+                <source src="main-video.mp4.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="banner-fade-gradient"></div>
+        </div>
+
+        <!-- تفاصيل الزواج والأسماء الكبرى -->
+        <section class="canvas-block" style="padding-top: 0;">
+            <div class="quran-royal-calligraphy">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <br>
+                "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً"
+            </div>
+            <div class="royal-crest-divider"></div>
+            <h1 class="elite-couple-names">Zohan & Rose</h1>
+            <p style="font-size: 15px; color: #4a443f; max-width: 85%; margin: 0 auto; line-height: 1.8; font-weight: 600;">
+                نتشرف بدعوتكم الكريمة والراقية لحضور ليلة عقد قراننا وحفل زفافنا الفاخر، وبحضوركم الميمون تكتمل بهجتنا ومسراتنا الكبرى.
+            </p>
+        </section>
+
+        <!-- عداد تنازلي دائري مصقول -->
+        <section class="canvas-block luxury-shading">
+            <h2 style="font-size: 16px; color: #111; margin-bottom: 25px; font-weight: 700; letter-spacing: 1px;">الوقت المتبقي لليلتنا المنتظرة</h2>
+            <div class="dynamic-timer-row">
+                <div class="timer-circle-node"><div class="timer-node-val" id="dNode">00</div><div class="timer-node-lbl">يوم</div></div>
+                <div class="timer-circle-node"><div class="timer-node-val" id="hNode">00</div><div class="timer-node-lbl">ساعة</div></div>
+                <div class="timer-circle-node"><div class="timer-node-val" id="mNode">00</div><div class="timer-node-lbl">دقيقة</div></div>
+                <div class="timer-circle-node"><div class="timer-node-val" id="sNode">00</div><div class="timer-node-lbl">ثانية</div></div>
+            </div>
+        </section>
+
+        <!-- خط الفعاليات الزمني والمراسم بالتفصيل -->
+        <section class="canvas-block">
+            <h2 style="color: #111; margin-bottom: 35px; font-size: 20px; font-weight: 700;">برنامج ليلة وعقد الحفل</h2>
+            
+            <div class="linear-royal-timeline">
+                <div class="timeline-stop-card">
+                    <h3>05:00 مساءً — استقبال الضيوف</h3>
+                    <p>فتح أبواب قصر الفرح والبدء بالترحيب بعائلات المدعوين الكرام بكل فخر واعتزاز.</p>
+                </div>
+                <div class="timeline-stop-card">
+                    <h3>06:30 مساءً — مراسم عقد القران</h3>
+                    <p>مراسم مباركة وتوقيع عقد القران وإعلان إشهار الزواج السعيد والميمون رسمياً للجميع.</p>
+                </div>
+                <div class="timeline-stop-card">
+                    <h3>08:00 مساءً — الزفة وعشاء الفرح</h3>
+                    <p>انطلاق فعاليات الزفة الملكية الكبرى داخل القاعة، تليها تقديم مأدبة طعام العشاء الفاخرة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- دليل اللباس (Dress Code) والملاحظات الدقيقة -->
+        <section class="canvas-block luxury-shading">
+            <h2 style="color: #111; font-size: 18px; font-weight: 700; margin-bottom: 25px;">دليل الحفل واللباس المقترح</h2>
+            
+            <div class="dress-code-flex-panel">
+                <div class="dress-node">
+                    <div class="dress-node-icon">👔</div>
+                    <div class="dress-node-title">للسادة الرجال</div>
+                    <div class="dress-node-desc">بدلة رسمية كاملة أو الثوب الرسمي الأنيق</div>
+                </div>
+                <div class="dress-node">
+                    <div class="dress-node-icon">👗</div>
+                    <div class="dress-node-title">للسيدات الأفاضل</div>
+                    <div class="dress-node-desc">فستان سهرة راقي ومحتشم يناسب الحفل</div>
+                </div>
+            </div>
+
+            <div class="wedding-rules-card">
+                <p>🚫 جنة الأطفال منازلهم — نعتذر ببالغ اللطف والاعتذار عن استقبال حضور الأطفال.</p>
+                <p style="margin-top: 10px;">📸 حفلنا مخصص بخصوصية عائلية تامة، يرجى لطفاً الامتناع عن التصوير بالهواتف داخل القاعة.</p>
+            </div>
+        </section>
+
+        <!-- موقع القصر والخرائط -->
+        <section class="canvas-block">
+            <h2 style="color: #111; font-size: 20px; font-weight: 700;">موقع قصر ومكان الحفل</h2>
+            <p style="color: #555; font-size: 14px; margin-top: 5px; font-weight: 600;">قاعة السرايا الملكية الفاخرة — فندق الريتز كارلتون</p>
+            <div class="royal-crest-divider"></div>
+        </section>
+
+        <!-- استمارة تأكيد الحضور المتقدمة (VIP RSVP Panel) -->
+        <section class="canvas-block" style="padding-bottom: 80px;">
+            <div class="vip-rsvp-container">
+                <h2 style="color: #111; margin-bottom: 8px; font-size: 18px; font-weight: 700;">تأكيد الحضور الملكي والتشريف</h2>
+                <p style="color: #666; font-size: 12px; margin-bottom: 25px;">حضوركم ومشاركتكم غالية جداً، يرجى ملء الاستمارة المعتمدة لتنظيم وتأكيد مقاعدكم الكريمة</p>
+                
+                <form id="vipWeddingForm">
+                    <div class="rsvp-field-row">
+                        <label>الاسم الكامل الكريم للمدعّو</label>
+                        <input type="text" id="vipGuestName" placeholder="اكتب اسمك الكريم هنا..." required>
+                    </div>
+                    <div class="rsvp-field-row">
+                        <label>تأكيد الحضور للمناسبة</label>
+                        <select id="vipAttendanceOption" required>
+                            <option value="yes">أتشرف وأؤكد الحضور والمشاركة بكل سرور</option>
+                            <option value="no">أعتذر ببالغ الأسف متمنياً لكم ليلة مباركة وموفقة</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-vip-action" onclick="processVipRSVP()">إرسال التأكيد الرسمي المبارك</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- كود المنطق والوظائف البرمجية -->
+    <script>
+        function executeHyperWarpTransition() {
+            const gate = document.getElementById('hyperGate');
+            const innerVideo = document.getElementById('innerWeddingVideo');
+            
+            gate.classList.add('warp-active');
+            
+            if (innerVideo) {
+                innerVideo.play().catch(function(error) {
+                    console.log("تشغيل محمي للفيديو بنجاح");
+                });
+            }
+            
+            setTimeout(() => {
+                document.body.classList.add('invite-loaded');
+                document.body.style.overflowY = 'auto';
+            }, 900);
+        }
+
+        document.body.style.overflowY = 'hidden';
+
+        function processVipRSVP() {
+            const guestName = document.getElementById('vipGuestName').value;
+            if(!guestName) {
+                alert('فضلاً، يرجى كتابة الاسم الكريم والكامل أولاً لتأكيد الحضور.');
+                return;
+            }
+            alert('أهلاً بك يا ' + guestName + '! تم حفظ وتأكيد موقف حضورك الرسمي لليلتنا الكبرى بنجاح. يسعدنا تشريفك الغالي ✨');
+        }
+
+        const weddingDateTarget = new Date("September 27, 2026 18:00:00").getTime();
+
+        const countdownTimerInterval = setInterval(function() {
+            const nowMoment = new Date().getTime();
+            const distanceLeft = weddingDateTarget - nowMoment;
+
+            const days = Math.floor(distanceLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distanceLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distanceLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distanceLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("dNode").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hNode").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("mNode").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("sNode").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distanceLeft < 0) {
+                clearInterval(countdownTimerInterval);
+                document.getElementById("dNode").innerHTML = "00";
+                document.getElementById("hNode").innerHTML = "00";
+                document.getElementById("mNode").innerHTML = "00";
+                document.getElementById("sNode").innerHTML = "00";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
